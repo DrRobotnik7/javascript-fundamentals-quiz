@@ -1,20 +1,19 @@
-// To do list
-// Update questions
-// Go back functionality
-// Clear high scores functionality
-// Local storage
-// When click submit button my initials and score are saved locally
-
-//Tried but can't do
-//The feedback countdown needs to reset with each click as it hides after 4 seconds starting from the first answer clicked
-// Audio functions for correct and wrong answers
-
 // Helper functions
 function show(element){
   element.classList.remove("hide");
 }
 function hide(element){
   element.classList.add("hide");
+}
+function getData(key) {
+  const v = localStorage.getItem(key);
+  if(!v) {
+    return "";
+  }
+  return JSON.parse(v);
+}
+function setData(key, value) {
+  return localStorage.setItem(key, JSON.stringify(value));
 }
 
 const $time = document.getElementById("time");
@@ -26,14 +25,30 @@ const $startScreen = document.getElementById("start-screen");
 const $endScreen = document.getElementById("end-screen");
 const $feedback = document.getElementById("feedback");
 const $finalScore = document.getElementById("final-score");
+const $initials = document.getElementById("initials");
+const $submit = document.getElementById("submit");
+
+let feedbackTimeout;
 let currentTime;
 let timer;
 let currentQuestion;
 let currentScore = 0;
 
+let userScore = getData('userScore') || [];
+
 $start.addEventListener("click", function() {
-    startTimer();
-    presentNextQuestion();
+  startTimer();
+  presentNextQuestion();
+});
+
+$submit.addEventListener("click", function() {
+  userScore.push({
+    'initials': $initials.value,
+    'highScore': currentScore
+  });
+  
+  setData('userScore', userScore)
+  window.location.href = "highscores.html";
 });
 
 function startTimer() {
@@ -46,7 +61,7 @@ function startTimer() {
   timer = setInterval(function(){
     currentTime -= 1;
     $time.innerHTML = currentTime
-    if(currentTime === 0) {
+    if(currentTime <= 0) {
       gameOver();
     } 
   }, 1000);
@@ -76,35 +91,25 @@ function presentNextQuestion() {
 }
 
 function pickAnswer(event) {
+  var audio;
+  clearTimeout(feedbackTimeout);
+
   if(questions[currentQuestion]["answer"] !== event.srcElement.innerHTML) {
     currentTime -= 10;
     $feedback.innerHTML = "Wrong!";
+    audio = new Audio('./assets/sfx/incorrect.wav');
   } else {
     $feedback.innerHTML = "Correct!";
     currentScore += 1;
+    audio = new Audio('./assets/sfx/correct.wav');
   }
+  audio.play();
+  
   show($feedback);
-  setTimeout(function() {
+
+  feedbackTimeout = setTimeout(function() {
     hide($feedback);
   }, 4000);
   presentNextQuestion();
 }
 
-// // THEN I can save my initials and score
-// window.onload = function() {
-
-//   // Check for LocalStorage support.
-//   if (localStorage) {
-
-//     // Add an event listener for form submissions
-//     document.getElementById('submit').addEventListener('click', function() {
-//       // Get the value of the name field.
-//       var name = document.getElementById('initials').value;
-
-//       // Save the name in localStorage.
-//       localStorage.setItem('initials', initials);
-//     });
-
-//   }
-
-// }
