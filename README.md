@@ -19,23 +19,21 @@ Click on the URL and you will be navigated to the web application in your defaul
 
 URL: https://drrobotnik7.github.io/javascript-fundamentals-quiz/
 
-Click on the links in the navigation bar to smoothly scroll to the relevant section of the website.
+In this multiple choice quiz you have 75 seconds to earn as many points as you can. You earn a point if you get a question correct, however, if you get a question incorrect then 10 seconds will be deducted from your time.
 
-Hover over various elements to add some colour to the website and take aim at the nefarious Dr.Robotnik!
+Once you have completed all questions, or the timer reaches 0, the quiz will end.
 
-Click on the buttons in the project cards and you will be directed to the selected web application in a new tab in your browser.
+To begin, click on the 'Start Quiz' button. Read the question and choose your answer by clicking on button A, B, C or D.
 
-Note that currently only the Portfolio, Horiseon and Prework cards currently point to a valid URL. The other images are placeholders...for now! The cursor will change to a 'not-allowed' cursor when you hover over these placeholders.
+At the end of the quiz your final score will be revealed. Users can enter their initials and click 'Submit' to save your score and view the Highscores board.
 
-![Jack Johnson Bootstrap Portfolio Screenshot](/assets/images/bootstrap-portfolio-screenshot.png)
+Users can try again by clicking the 'Go Back' button. Alternatively, users and clear the Highscores board by clicking 'Clear Highscores'.
+
+![Jack Johnson Bootstrap Portfolio Screenshot](/assets/images/quiz-screenshot.png)
 
 ## Credits
 
-I used code provided by Bootstrap as a template for the header, navigation bar, jumbotron, portfolio cards and footer.
-
-Many thanks to the EdX team for teaching me the coding skills needed to complete this portfolio and the projects within it. 
-
-I would also like to acknowledge my peers in Sibert-pod-11. We're all on the same learning journey and have helped each other massively during the front-end web development skills boot camp.
+Once again thanks to my pod mates in Sibert-pod-11. It's getting tough now and we all help each other out, especially when we are stuck.
 
 ## License
 

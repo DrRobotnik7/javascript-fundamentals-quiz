@@ -1,6 +1,6 @@
 const questions = [
     {
-        "question":"1.) JavaScript a _________ language?",
+        "question":"1.) JavaScript is a _________ language?",
         "options":[
             "A.) Programming",
             "B.) Scripting",
